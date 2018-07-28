@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\SpritePlayer.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StateGame.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ZGBMain.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ZGBMain_Init.c">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\SpritePlayer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StateGame.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ZGBMain.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Makefile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{c5bf4234-da8b-45aa-8e95-bc65782ff684}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{d053d6a1-29d7-4276-85cb-b2a61568fc6c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
