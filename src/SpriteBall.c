@@ -26,6 +26,8 @@ void Start_SPRITE_BALL() {
 
 	THIS->coll_y += 8;
 	THIS->coll_h -= 8;
+	THIS->lim_x = 1024;
+	THIS->lim_y = 1024;
 }
 
 UINT8 CheckCollisionWithCollider(struct Sprite* sprite1, UINT8 coll_x, UINT8 coll_y, UINT8 coll_w, UINT8 coll_h, 
@@ -42,6 +44,7 @@ UINT8 CheckCollisionWithCollider(struct Sprite* sprite1, UINT8 coll_x, UINT8 col
 }
 
 extern INT8 angle_idx;
+void KillPlayer();
 void Update_SPRITE_BALL() {
 	INT8 inc_x = 0;
 	INT8 inc_y = 0;
@@ -82,7 +85,8 @@ void Update_SPRITE_BALL() {
 	if(CheckCollision(THIS, scroll_target)) {
 		data->angle = anglesByIdx[angle_idx];
 		if(scroll_target && CheckCollisionWithCollider(scroll_target, 6, 6, 4, 4, THIS)) {
-			SpriteManagerRemoveSprite(scroll_target);
+			//SpriteManagerRemoveSprite(scroll_target);
+			KillPlayer();
 		}
 	}
 }
