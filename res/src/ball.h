@@ -1,16 +1,16 @@
 /*
 
- SRC/TILES.B3.C
+ SRC/BALL.H
 
- Tile Source File.
+ Include File.
 
  Info:
   Form                 : All tiles as one unit.
   Format               : Gameboy 4 color.
   Compression          : None.
   Counter              : None.
-  Tile size            : 8 x 8
-  Tiles                : 0 to 1
+  Tile size            : 8 x 16
+  Tiles                : 0 to 0
 
   Palette colors       : None.
   SGB Palette          : None.
@@ -22,13 +22,10 @@
 
 */
 
-/* Start of tile array. */
-const unsigned  char tiles[] =
-{
-  0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-  0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-  0xFF,0x99,0xFF,0x42,0xFF,0xA8,0xFF,0x45,
-  0xFF,0x21,0xFF,0x2A,0xFF,0x91,0xFF,0x44
-};
 
-/* End of SRC/TILES.B3.C */
+/* Bank of tiles. */
+#define ballBank 0
+/* Start of tile array. */
+extern unsigned char ball[];
+
+/* End of SRC/BALL.H */
