@@ -4,6 +4,7 @@ UINT8 bank_SPRITE_PLAYER = 2;
 
 #include "Keys.h"
 #include "SpriteManager.h"
+#include "Scroll.h"
 
 void Start_SPRITE_PLAYER() {
 }
@@ -59,4 +60,5 @@ void Update_SPRITE_PLAYER() {
 }
 
 void Destroy_SPRITE_PLAYER() {
+	scroll_target = 0;
 }
