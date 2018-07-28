@@ -6,16 +6,14 @@ UINT8 bank_SPRITE_PLAYER = 2;
 #include "SpriteManager.h"
 
 void Start_SPRITE_PLAYER() {
-
 }
 
-/*
--1 0 1 
--2   2
--3 4 3
-*/
-
-const INT8 angle_matrix[] = {-1, 0, 1, -2, 0, 2, -3, 4, 3};
+INT8 angle_idx;
+const INT8 angle_matrix[] = {
+	-1, 0, 1, 
+	-2, 0, 2, 
+	-3, 4, 3
+};
 
 void Translate(INT8 translate, INT8 x, INT8 y) {
 	if(translate) {
@@ -25,7 +23,6 @@ void Translate(INT8 translate, INT8 x, INT8 y) {
 
 void Update_SPRITE_PLAYER() {
 	INT8 angle;
-	INT8 angle_idx;
 	INT8 translate = 1;
 
 	if(keys) {

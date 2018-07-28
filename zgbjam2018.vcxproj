@@ -22,6 +22,7 @@
     <ClCompile Include="src\SpriteBall.c" />
     <ClCompile Include="src\SpritePlayer.c" />
     <ClCompile Include="src\StateGame.c" />
+    <ClCompile Include="src\Trig.c" />
     <ClCompile Include="src\ZGBMain.c" />
     <ClCompile Include="src\ZGBMain_Init.c" />
   </ItemGroup>
@@ -29,6 +30,7 @@
     <ClInclude Include="include\SpriteBall.h" />
     <ClInclude Include="include\SpritePlayer.h" />
     <ClInclude Include="include\StateGame.h" />
+    <ClInclude Include="include\Trig.h" />
     <ClInclude Include="include\ZGBMain.h" />
   </ItemGroup>
   <ItemGroup>
