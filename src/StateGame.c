@@ -15,8 +15,8 @@ typedef struct LevelInfo {
 
 #define LEVEL(A, BANK) A##Width, A##Height, A, BANK
 const struct LevelInfo levels[] = {
-	//{LEVEL(map1,3)},
-	//{LEVEL(map,3)},
+	{LEVEL(map1,3)},
+	{LEVEL(map,3)},
 
 	{0, 0, 0, 0}
 };
@@ -54,8 +54,8 @@ void Update_STATE_GAME() {
 void NextLevel() {
 	current_level ++;
 	if(levels[current_level].map) {
-		SetState(STATE_WIN);
-	} else {
 		SetState(STATE_GAME);
+	} else {
+		SetState(STATE_WIN);
 	}
 }
