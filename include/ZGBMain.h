@@ -4,7 +4,9 @@
 #include "main.h"
 
 typedef enum {
+	STATE_SPLASH,
 	STATE_GAME,
+	STATE_WIN,
 
 	N_STATES
 } STATE;
