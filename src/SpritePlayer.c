@@ -10,6 +10,8 @@ UINT8 bank_SPRITE_PLAYER = 2;
 void Start_SPRITE_PLAYER() {
 	THIS->coll_y += 8;
 	THIS->coll_h -= 8;
+
+	scroll_target = THIS;
 }
 
 INT8 angle_idx;

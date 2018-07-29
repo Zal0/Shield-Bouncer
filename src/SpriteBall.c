@@ -7,6 +7,8 @@ UINT8 bank_SPRITE_BALL = 2;
 #include "Scroll.h"
 #include "Trig.h"
 #include "Math.h"
+#include "ZGBMain.h"
+#include "StateGame.h"
 
 const UINT8 anim_fall[] = {3, 1, 2, 2};
 
@@ -17,12 +19,14 @@ const UINT8 anglesByIdx[] = {
 };
 
 struct BallInfo {
+	INT8 moving;
 	INT8 angle, speed;
 	fixed x,y;
 };
 
 void Start_SPRITE_BALL() {
 	struct BallInfo* data = (struct BallInfo*)THIS->custom_data;
+	data->moving = 0;
 	data->angle = 16;
 	data->speed = 5;
 
@@ -58,25 +62,28 @@ void Update_SPRITE_BALL() {
 	if(THIS->anim_data) {
 		if(THIS->current_frame == 2) {
 			SpriteManagerRemoveSprite(THIS);
+			NextLevel();
 		}
 	} else {
-		desp = -4 + data->speed + delta_time;
-		if(desp < 0) {
-			desp = -desp;
-			data->x.w += COS(data->angle) >> desp;
-			data->y.w += SIN(data->angle) >> desp;
-		} else {
-			data->x.w += COS(data->angle) << desp;
-			data->y.w += SIN(data->angle) << desp;
-		}
+		if(data->moving) {
+			desp = -4 + data->speed + delta_time;
+			if(desp < 0) {
+				desp = -desp;
+				data->x.w += COS(data->angle) >> desp;
+				data->y.w += SIN(data->angle) >> desp;
+			} else {
+				data->x.w += COS(data->angle) << desp;
+				data->y.w += SIN(data->angle) << desp;
+			}
 
-		if(data->x.b.h > 0) {
-			inc_x = data->x.b.h;
-			data->x.b.h = 0;
-		}
-		if(data->y.b.h > 0) {
-			inc_y = data->y.b.h;
-			data->y.b.h = 0;
+			if(data->x.b.h > 0) {
+				inc_x = data->x.b.h;
+				data->x.b.h = 0;
+			}
+			if(data->y.b.h > 0) {
+				inc_y = data->y.b.h;
+				data->y.b.h = 0;
+			}
 		}
 
 		cached_x = THIS->x + inc_x; 
@@ -98,6 +105,7 @@ void Update_SPRITE_BALL() {
 		}
 
 		if(CheckCollision(THIS, scroll_target)) {
+			data->moving = 1;
 			data->angle = anglesByIdx[angle_idx];
 
 			TranslateSprite(scroll_target, COS(data->angle + 128) >> 6, SIN(data->angle + 128) >> 6);

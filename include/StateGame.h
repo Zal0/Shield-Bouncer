@@ -5,4 +5,6 @@
 
 DECLARE_STATE(STATE_GAME);
 
+void NextLevel();
+
 #endif
