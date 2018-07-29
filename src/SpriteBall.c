@@ -24,8 +24,8 @@ void Start_SPRITE_BALL() {
 	data->angle = 16;
 	data->speed = 5;
 
-	THIS->coll_y += 8;
-	THIS->coll_h -= 8;
+	THIS->coll_y += 12;
+	THIS->coll_h -= 12;
 	THIS->lim_x = 1024;
 	THIS->lim_y = 1024;
 }
@@ -84,10 +84,9 @@ void Update_SPRITE_BALL() {
 
 	if(CheckCollision(THIS, scroll_target)) {
 		data->angle = anglesByIdx[angle_idx];
-		if(scroll_target && CheckCollisionWithCollider(scroll_target, 6, 6, 4, 4, THIS)) {
-			//SpriteManagerRemoveSprite(scroll_target);
+		/*if(scroll_target && CheckCollisionWithCollider(scroll_target, 6, 6, 4, 4, THIS)) {
 			KillPlayer();
-		}
+		}*/
 	}
 }
 
