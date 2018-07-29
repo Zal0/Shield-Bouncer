@@ -54,7 +54,7 @@ void Update_STATE_GAME() {
 void NextLevel() {
 	current_level ++;
 	if(levels[current_level].map) {
-		SetState(STATE_GAME);
+		SetState(STATE_LEVEL_INTRO);
 	} else {
 		SetState(STATE_WIN);
 	}

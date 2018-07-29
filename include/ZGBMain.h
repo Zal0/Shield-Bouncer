@@ -7,6 +7,7 @@ typedef enum {
 	STATE_SPLASH,
 	STATE_GAME,
 	STATE_WIN,
+	STATE_LEVEL_INTRO,
 
 	N_STATES
 } STATE;
