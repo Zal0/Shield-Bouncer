@@ -28,7 +28,12 @@ void Start_STATE_SPLASH() {
 extern UINT8 current_level;
 void Update_STATE_SPLASH() {
 	if(keys) {
-		current_level = -1;
+		current_level = 0;
+#ifndef NDEBUG
+		current_level = 1;
+#endif
+
+		current_level--;
 		NextLevel();
 	}
 }

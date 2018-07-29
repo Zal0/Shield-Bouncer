@@ -5,6 +5,7 @@ UINT8 bank_STATE_GAME = 2;
 #include "..\res\src\tiles.h"
 #include "..\res\src\map.h"
 #include "..\res\src\map1.h"
+#include "..\res\src\map2.h"
 
 typedef struct LevelInfo {
 	UINT16 w;
@@ -16,6 +17,7 @@ typedef struct LevelInfo {
 #define LEVEL(A, BANK) A##Width, A##Height, A, BANK
 const struct LevelInfo levels[] = {
 	{LEVEL(map1,3)},
+	{LEVEL(map2,3)},
 	{LEVEL(map,3)},
 
 	{0, 0, 0, 0}
