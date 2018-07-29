@@ -8,6 +8,8 @@ UINT8 bank_SPRITE_BALL = 2;
 #include "Trig.h"
 #include "Math.h"
 
+const UINT8 anim_fall[] = {3, 1, 2, 2};
+
 const UINT8 anglesByIdx[] = {
 	224, 192,  160,
 	  0,   0,  128,
@@ -50,43 +52,59 @@ void Update_SPRITE_BALL() {
 	INT8 inc_y = 0;
 	INT8 desp;
 	INT16 cached_x, cached_y;
+	UINT8 tile_coll;
 	struct BallInfo* data = (struct BallInfo*)THIS->custom_data;
 	
-	desp = -4 + data->speed + delta_time;
-	if(desp < 0) {
-		desp = -desp;
-		data->x.w += COS(data->angle) >> desp;
-		data->y.w += SIN(data->angle) >> desp;
+	if(THIS->anim_data) {
+		if(THIS->current_frame == 2) {
+			SpriteManagerRemoveSprite(THIS);
+		}
 	} else {
-		data->x.w += COS(data->angle) << desp;
-		data->y.w += SIN(data->angle) << desp;
-	}
-
-	if(data->x.b.h > 0) {
-		inc_x = data->x.b.h;
-		data->x.b.h = 0;
-	}
-	if(data->y.b.h > 0) {
-		inc_y = data->y.b.h;
-		data->y.b.h = 0;
-	}
-
-	cached_x = THIS->x + inc_x; 
-	cached_y = THIS->y + inc_y; 
-	if(TranslateSprite(THIS, inc_x, inc_y)) {
-		if(THIS->x != cached_x) {
-			data->angle = 128 - data->angle;
+		desp = -4 + data->speed + delta_time;
+		if(desp < 0) {
+			desp = -desp;
+			data->x.w += COS(data->angle) >> desp;
+			data->y.w += SIN(data->angle) >> desp;
+		} else {
+			data->x.w += COS(data->angle) << desp;
+			data->y.w += SIN(data->angle) << desp;
 		}
-		if(THIS->y != cached_y) {
-			data->angle = -data->angle;
-		}
-	}
 
-	if(CheckCollision(THIS, scroll_target)) {
-		data->angle = anglesByIdx[angle_idx];
-		/*if(scroll_target && CheckCollisionWithCollider(scroll_target, 6, 6, 4, 4, THIS)) {
-			KillPlayer();
-		}*/
+		if(data->x.b.h > 0) {
+			inc_x = data->x.b.h;
+			data->x.b.h = 0;
+		}
+		if(data->y.b.h > 0) {
+			inc_y = data->y.b.h;
+			data->y.b.h = 0;
+		}
+
+		cached_x = THIS->x + inc_x; 
+		cached_y = THIS->y + inc_y; 
+		if(TranslateSprite(THIS, inc_x, inc_y)) {
+			if(THIS->x != cached_x) {
+				data->angle = 128 - data->angle;
+			}
+			if(THIS->y != cached_y) {
+				data->angle = -data->angle;
+			}
+		}
+
+		if(GetScrollTile((THIS->x + 4) >> 3, (THIS->y + 16) >> 3) == 3) {
+			THIS->x = (((THIS->x + 4) >> 3) << 3) + 4 - 4;
+			THIS->y = (((THIS->y + 16) >> 3) << 3) + 4 -16;
+			SetSpriteAnim(THIS, anim_fall, 8);
+			return;
+		}
+
+		if(CheckCollision(THIS, scroll_target)) {
+			data->angle = anglesByIdx[angle_idx];
+
+			TranslateSprite(scroll_target, COS(data->angle + 128) >> 6, SIN(data->angle + 128) >> 6);
+			/*if(scroll_target && CheckCollisionWithCollider(scroll_target, 6, 6, 4, 4, THIS)) {
+				KillPlayer();
+			}*/
+		}
 	}
 }
 
