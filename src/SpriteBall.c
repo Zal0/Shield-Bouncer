@@ -126,9 +126,9 @@ void Update_SPRITE_BALL() {
 
 			TranslateSprite(scroll_target, COS(data->angle + 128) >> 6, SIN(data->angle + 128) >> 6);
 
-			if(data->moving && scroll_target && Angle(cached_angle, player_angles[angle_idx]) > 65) {
+			/*if(data->moving && scroll_target && Angle(cached_angle, player_angles[angle_idx]) > 65) {
 				KillPlayer();
-			}
+			}*/
 
 			data->moving = 1;
 		}
