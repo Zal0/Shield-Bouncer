@@ -18,12 +18,27 @@ const UINT8 anglesByIdx[] = {
 	 32,  64,   96,
 };
 
+const UINT8 player_angles[] = {
+	 96,  64,  32,
+	128,   0,   0,
+	160, 192, 224
+};
+
 struct BallInfo {
 	INT8 moving;
-	INT8 angle, speed;
+	UINT8 angle; 
+	INT8 speed;
 	fixed x,y;
 };
 
+UINT8 Angle(UINT8 angle_1, UINT8 angle_2) {
+	UINT8 ret_1 = angle_2 - angle_1;
+	UINT8 ret_2 = -angle_2 + angle_1;
+
+	return ret_1 < ret_2 ? ret_1 : ret_2;
+}
+
+#include "Print.h"
 void Start_SPRITE_BALL() {
 	struct BallInfo* data = (struct BallInfo*)THIS->custom_data;
 	data->moving = 0;
@@ -57,8 +72,9 @@ void Update_SPRITE_BALL() {
 	INT8 desp;
 	INT16 cached_x, cached_y;
 	UINT8 tile_coll;
+	UINT8 cached_angle;
 	struct BallInfo* data = (struct BallInfo*)THIS->custom_data;
-	
+
 	if(THIS->anim_data) {
 		if(THIS->current_frame == 2) {
 			SpriteManagerRemoveSprite(THIS);
@@ -105,13 +121,16 @@ void Update_SPRITE_BALL() {
 		}
 
 		if(CheckCollision(THIS, scroll_target)) {
-			data->moving = 1;
+			cached_angle = data->angle;
 			data->angle = anglesByIdx[angle_idx];
 
 			TranslateSprite(scroll_target, COS(data->angle + 128) >> 6, SIN(data->angle + 128) >> 6);
-			/*if(scroll_target && CheckCollisionWithCollider(scroll_target, 6, 6, 4, 4, THIS)) {
+
+			if(data->moving && scroll_target && Angle(cached_angle, player_angles[angle_idx]) > 65) {
 				KillPlayer();
-			}*/
+			}
+
+			data->moving = 1;
 		}
 	}
 }
