@@ -6,6 +6,7 @@ UINT8 bank_STATE_GAME = 2;
 #include "..\res\src\map.h"
 #include "..\res\src\map1.h"
 #include "..\res\src\map2.h"
+#include "..\res\src\map3.h"
 
 typedef struct LevelInfo {
 	UINT16 w;
@@ -19,6 +20,7 @@ const struct LevelInfo levels[] = {
 	{LEVEL(map1,3)},
 	{LEVEL(map2,3)},
 	{LEVEL(map,3)},
+	{LEVEL(map3,3)},
 
 	{0, 0, 0, 0}
 };
@@ -31,6 +33,9 @@ UINT8 current_level = 0;
 #include "ZGBMain.h"
 #include "Scroll.h"
 #include "SpriteManager.h"
+
+#include "Print.h"
+#include "../res/src/font.h"
 
 UINT8 collision_tiles[] = {1, 2, 0};
 
@@ -48,6 +53,8 @@ void Start_STATE_GAME() {
 	InitScrollTiles(0, 6, tiles, 3);
 	InitScroll(level->w, level->h, level->map, collision_tiles, 0, level->bank);
 	SHOW_BKG;
+
+	INIT_CONSOLE(font, 3, 2);
 }
 
 void Update_STATE_GAME() {

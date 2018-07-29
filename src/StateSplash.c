@@ -30,7 +30,7 @@ void Update_STATE_SPLASH() {
 	if(keys) {
 		current_level = 0;
 #ifndef NDEBUG
-		current_level = 1;
+		current_level = 3;
 #endif
 
 		current_level--;
