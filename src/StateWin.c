@@ -7,8 +7,9 @@ UINT8 bank_STATE_WIN = 2;
 #include "../res/src/font.h"
 
 #include "Scroll.h"
-
+#include "ZGBMain.h"
 #include "Print.h"
+#include "Keys.h"
 
 void Start_STATE_WIN() {
 	InitScrollTiles(0, 256, splashTiles, 3);
@@ -21,4 +22,7 @@ void Start_STATE_WIN() {
 }
 
 void Update_STATE_WIN() {
+	if(keys) {
+		SetState(STATE_SPLASH);
+	}
 }
