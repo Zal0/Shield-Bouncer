@@ -1,5 +1,5 @@
 #pragma bank 2
-#include "SpriteBall.h"
+#include "main.h"
 UINT8 bank_SPRITE_BALL = 2;
 
 #include "Keys.h"
@@ -8,7 +8,6 @@ UINT8 bank_SPRITE_BALL = 2;
 #include "Trig.h"
 #include "Math.h"
 #include "ZGBMain.h"
-#include "StateGame.h"
 
 const UINT8 anim_fall[] = {3, 1, 2, 2};
 
@@ -66,12 +65,13 @@ UINT8 CheckCollisionWithCollider(struct Sprite* sprite1, UINT8 coll_x, UINT8 col
 
 extern INT8 angle_idx;
 void KillPlayer();
+void NextLevel();
 void Update_SPRITE_BALL() {
 	INT8 inc_x = 0;
 	INT8 inc_y = 0;
 	INT8 desp;
 	INT16 cached_x, cached_y;
-	UINT8 tile_coll;
+	//UINT8 tile_coll;
 	UINT8 cached_angle;
 	struct BallInfo* data = (struct BallInfo*)THIS->custom_data;
 

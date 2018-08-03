@@ -30,28 +30,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\SpritePlayer.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\StateGame.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include\ZGBMain.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\SpriteBall.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include\Trig.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\StateSplash.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\StateWin.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\StateLevelIntro.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

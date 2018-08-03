@@ -1,5 +1,5 @@
 #pragma bank 2
-#include "StateWin.h"
+#include "main.h"
 UINT8 bank_STATE_WIN = 2;
 
 #include "../res/src/splash.h"

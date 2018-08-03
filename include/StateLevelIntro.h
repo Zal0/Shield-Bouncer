@@ -1,8 +1,0 @@
-#ifndef STATE_LEVEL_INTRO_H
-#define STATE_LEVEL_INTRO_H
-
-#include "main.h"
-
-DECLARE_STATE(STATE_LEVEL_INTRO);
-
-#endif

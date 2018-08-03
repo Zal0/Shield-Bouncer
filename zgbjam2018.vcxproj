@@ -30,12 +30,6 @@
     <ClCompile Include="src\ZGBMain_Init.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\SpriteBall.h" />
-    <ClInclude Include="include\SpritePlayer.h" />
-    <ClInclude Include="include\StateGame.h" />
-    <ClInclude Include="include\StateLevelIntro.h" />
-    <ClInclude Include="include\StateSplash.h" />
-    <ClInclude Include="include\StateWin.h" />
     <ClInclude Include="include\Trig.h" />
     <ClInclude Include="include\ZGBMain.h" />
   </ItemGroup>

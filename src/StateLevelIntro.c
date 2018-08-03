@@ -1,5 +1,5 @@
 #pragma bank 2
-#include "StateLevelIntro.h"
+#include "main.h"
 UINT8 bank_STATE_LEVEL_INTRO = 2;
 
 #include "../res/src/splash.h"
@@ -9,7 +9,6 @@ UINT8 bank_STATE_LEVEL_INTRO = 2;
 #include "Scroll.h"
 #include "Keys.h"
 #include "ZGBMain.h"
-#include "StateGame.h"
 
 #include "Print.h"
 

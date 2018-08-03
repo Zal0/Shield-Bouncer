@@ -1,5 +1,5 @@
 #pragma bank 2
-#include "StateSplash.h"
+#include "main.h"
 UINT8 bank_STATE_SPLASH = 2;
 
 #include "../res/src/splash.h"
@@ -9,7 +9,6 @@ UINT8 bank_STATE_SPLASH = 2;
 #include "Scroll.h"
 #include "Keys.h"
 #include "ZGBMain.h"
-#include "StateGame.h"
 
 #include "Print.h"
 
@@ -26,12 +25,10 @@ void Start_STATE_SPLASH() {
 }
 
 extern UINT8 current_level;
+void NextLevel();
 void Update_STATE_SPLASH() {
 	if(keys) {
 		current_level = 0;
-#ifndef NDEBUG
-		current_level = 3;
-#endif
 
 		current_level--;
 		NextLevel();

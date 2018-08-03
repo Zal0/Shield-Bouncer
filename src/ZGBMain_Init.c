@@ -1,32 +1,31 @@
 #pragma bank 1
 #include "ZGBMain.h"
 UINT8 init_bank = 1;
-
-
-#include "StateSplash.h"
-#include "StateGame.h"
-#include "StateWin.h"
-#include "StateLevelIntro.h"
-
-#include "SpritePlayer.h"
-#include "SpriteBall.h"
-
-#include "../res/src/player.h"
-#include "../res/src/ball.h"
-
 UINT8 next_state = STATE_SPLASH;
+
+#define _STATE(STATE_ID) DECLARE_STATE(STATE_ID);
+STATES
+#undef _STATE
+
+#define _SPRITE(SPRITE_ID, DATA, BANK, SIZE, NFRAMES) DECLARE_SPRITE(SPRITE_ID);
+SPRITES
+#undef _SPRITE
+
+#define _SPRITE(SPRITE_ID, DATA, BANK, SIZE, NFRAMES) extern unsigned char DATA[];
+SPRITES
+#undef _SPRITE
 
 SET_N_STATES(N_STATES);
 SET_N_SPRITE_TYPES(N_SPRITE_TYPES);
 
+#define _STATE(STATE_ID) INIT_STATE(STATE_ID);
 void InitStates() {
-	INIT_STATE(STATE_SPLASH);
-	INIT_STATE(STATE_GAME);
-	INIT_STATE(STATE_WIN);
-	INIT_STATE(STATE_LEVEL_INTRO);
+	STATES
 }
+#undef _STATE
 
+#define _SPRITE(SPRITE_ID, DATA, BANK, SIZE, NFRAMES) INIT_SPRITE(SPRITE_ID, DATA, BANK, SIZE, NFRAMES);
 void InitSprites() {
-	INIT_SPRITE(SPRITE_PLAYER, player, 3, FRAME_16x16, 9);
-	INIT_SPRITE(SPRITE_BALL, ball, 3, FRAME_8x16, 3);
+	SPRITES
 }
+#undef _SPRITE
