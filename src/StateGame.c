@@ -39,13 +39,12 @@ UINT8 current_level = 0;
 
 UINT8 collision_tiles[] = {1, 2, 0};
 
-extern UINT8 n_sprite_types;
 void Start_STATE_GAME() {
 	UINT8 i;
 	const struct LevelInfo* level = &levels[current_level];
 
 	SPRITES_8x16;
-	for(i = 0; i != n_sprite_types; ++ i) {
+	for(i = 0; i != N_SPRITE_TYPES; ++ i) {
 		SpriteManagerLoad(i);
 	}
 	SHOW_SPRITES;
