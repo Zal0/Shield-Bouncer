@@ -27,7 +27,6 @@
     <ClCompile Include="src\StateWin.c" />
     <ClCompile Include="src\Trig.c" />
     <ClCompile Include="src\ZGBMain.c" />
-    <ClCompile Include="src\ZGBMain_Init.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Trig.h" />

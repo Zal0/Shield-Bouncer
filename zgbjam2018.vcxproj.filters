@@ -1,39 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\SpritePlayer.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\StateGame.c">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\ZGBMain.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ZGBMain_Init.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SpriteBall.c">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Trig.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\StateSplash.c">
-      <Filter>src</Filter>
+    <ClCompile Include="src\SpriteBall.c">
+      <Filter>src\Sprites</Filter>
     </ClCompile>
-    <ClCompile Include="src\StateWin.c">
-      <Filter>src</Filter>
+    <ClCompile Include="src\SpritePlayer.c">
+      <Filter>src\Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StateGame.c">
+      <Filter>src\States</Filter>
     </ClCompile>
     <ClCompile Include="src\StateLevelIntro.c">
-      <Filter>src</Filter>
+      <Filter>src\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StateSplash.c">
+      <Filter>src\States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StateWin.c">
+      <Filter>src\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\ZGBMain.h">
+    <ClInclude Include="include\Trig.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\Trig.h">
+    <ClInclude Include="include\ZGBMain.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -46,6 +43,12 @@
     </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{d053d6a1-29d7-4276-85cb-b2a61568fc6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\States">
+      <UniqueIdentifier>{8a0b1f2f-07f9-4df2-b3ed-3c26d2434f7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Sprites">
+      <UniqueIdentifier>{0c291f4a-c42a-4a21-8be6-ce70debfae1b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
