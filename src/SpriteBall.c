@@ -12,15 +12,15 @@ UINT8 bank_SPRITE_BALL = 2;
 const UINT8 anim_fall[] = {3, 1, 2, 2};
 
 const UINT8 anglesByIdx[] = {
-	224, 192,  160,
-	  0,   0,  128,
-	 32,  64,   96,
+	  160, 192, 224,
+	  128,   0,	  0,
+	   96,  64,	 32,
 };
 
 const UINT8 player_angles[] = {
-	 96,  64,  32,
-	128,   0,   0,
-	160, 192, 224
+	  32,  64,  96,
+	   0,   0, 128,
+	 224,	192, 160,
 };
 
 struct BallInfo {
@@ -71,8 +71,6 @@ void Update_SPRITE_BALL() {
 	INT8 inc_y = 0;
 	INT8 desp;
 	INT16 cached_x, cached_y;
-	//UINT8 tile_coll;
-	UINT8 cached_angle;
 	struct BallInfo* data = (struct BallInfo*)THIS->custom_data;
 
 	if(THIS->anim_data) {
@@ -121,14 +119,12 @@ void Update_SPRITE_BALL() {
 		}
 
 		if(CheckCollision(THIS, scroll_target)) {
-			cached_angle = data->angle;
-			data->angle = anglesByIdx[angle_idx];
-
-			TranslateSprite(scroll_target, COS(data->angle + 128) >> 6, SIN(data->angle + 128) >> 6);
-
-			/*if(data->moving && scroll_target && Angle(cached_angle, player_angles[angle_idx]) > 65) {
-				KillPlayer();
-			}*/
+			//if(data->moving && scroll_target && Angle(data->angle, player_angles[angle_idx]) > 65) {
+			//	KillPlayer();
+			//} else {
+				data->angle = anglesByIdx[angle_idx];
+				TranslateSprite(scroll_target, COS(data->angle + 128) >> 6, SIN(data->angle + 128) >> 6);
+			//}
 
 			data->moving = 1;
 		}
