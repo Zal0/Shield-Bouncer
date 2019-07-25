@@ -49,7 +49,7 @@ void Start_STATE_GAME() {
 	}
 	SHOW_SPRITES;
 
-	InitScrollTiles(0, 6, tiles, 3);
+	InitScrollTiles(0, &tiles, bank_tiles);
 	InitScroll(level->w, level->h, level->map, collision_tiles, 0, level->bank);
 	SHOW_BKG;
 

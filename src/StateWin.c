@@ -12,12 +12,12 @@ UINT8 bank_STATE_WIN = 2;
 #include "Keys.h"
 
 void Start_STATE_WIN() {
-	InitScrollTiles(0, 256, splashTiles, 3);
+	InitScrollTiles(0, &splashTiles, bank_splashTiles);
 	InitScroll(splashWidth, splashHeight, splash, 0, 0, 3);
 	SHOW_BKG;
 	HIDE_WIN;
 
-	INIT_FONT(font, 3, PRINT_BKG);
+	INIT_FONT(font, PRINT_BKG);
 	PRINT(1, 5, "CONGRATULATIONS!!!");
 }
 
