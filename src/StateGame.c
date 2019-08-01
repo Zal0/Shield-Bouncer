@@ -11,18 +11,17 @@ UINT8 bank_STATE_GAME = 2;
 typedef struct LevelInfo {
 	UINT16 w;
 	UINT16 h;
-	UINT8* map;
-	UINT8 bank;
+	struct MapInfo* map;
 };
 
-#define LEVEL(A, BANK) A##Width, A##Height, A, BANK
+#define LEVEL(A) A##Width, A##Height, &A
 const struct LevelInfo levels[] = {
-	{LEVEL(map1,3)},
-	{LEVEL(map2,3)},
-	{LEVEL(map,3)},
-	{LEVEL(map3,3)},
+	{LEVEL(map1)},
+	{LEVEL(map2)},
+	{LEVEL(map)},
+	{LEVEL(map3)},
 
-	{0, 0, 0, 0}
+	{0, 0, 0}
 };
 
 UINT8 current_level = 0;
@@ -49,8 +48,8 @@ void Start_STATE_GAME() {
 	}
 	SHOW_SPRITES;
 
-	InitScrollTiles(0, &tiles, bank_tiles);
-	InitScroll(level->w, level->h, level->map, collision_tiles, 0, level->bank);
+	InitScrollTiles(0, &tiles);
+	InitScroll(level->map, collision_tiles, 0);
 	SHOW_BKG;
 
 	INIT_CONSOLE(font, 3, 2);

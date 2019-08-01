@@ -14,8 +14,8 @@ UINT8 bank_STATE_LEVEL_INTRO = 2;
 
 extern UINT8 current_level;
 void Start_STATE_LEVEL_INTRO() {
-	InitScrollTiles(0, &splashTiles, bank_splashTiles);
-	InitScroll(splashWidth, splashHeight, splash, 0, 0, 3);
+	InitScrollTiles(0, &splashTiles);
+	InitScroll(&splash, 0, 0);
 	SHOW_BKG;
 	HIDE_WIN;
 

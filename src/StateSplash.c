@@ -13,8 +13,8 @@ UINT8 bank_STATE_SPLASH = 2;
 #include "Print.h"
 
 void Start_STATE_SPLASH() {
-	InitScrollTiles(0, &splashTiles, bank_splashTiles);
-	InitScroll(splashWidth, splashHeight, splash, 0, 0, 3);
+	InitScrollTiles(0, &splashTiles);
+	InitScroll(&splash, 0, 0);
 	SHOW_BKG;
 	HIDE_WIN;
 
