@@ -1,2 +1,2 @@
-# zgbjam2018
-My entry for the zgbjam
+# Shield Bouncer
+My entry for the zgbjam 2018
