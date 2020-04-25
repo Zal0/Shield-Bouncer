@@ -74,7 +74,7 @@ void Update_SPRITE_BALL() {
 	struct BallInfo* data = (struct BallInfo*)THIS->custom_data;
 
 	if(THIS->anim_data) {
-		if(THIS->current_frame == 2) {
+		if(THIS->anim_frame == 2) {
 			SpriteManagerRemoveSprite(THIS);
 			NextLevel();
 		}

@@ -61,10 +61,10 @@ void Update_SPRITE_PLAYER() {
 				SPRITE_UNSET_VMIRROR(THIS);
 			}
 
-			THIS->current_frame = angle;
+			SET_FRAME(THIS, angle); 
 		}
 	} else {
-		if(THIS->current_frame == 9) {
+		if(THIS->anim_frame == 9) {
 			SpriteManagerRemoveSprite(THIS);
 			SetState(STATE_GAME);
 		}
