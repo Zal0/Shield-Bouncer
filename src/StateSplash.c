@@ -1,10 +1,8 @@
-#pragma bank 2
+#include "Banks/SetBank2.h"
 #include "main.h"
-UINT8 bank_STATE_SPLASH = 2;
 
-#include "../res/src/splash.h"
-#include "../res/src/splashTiles.h"
-#include "../res/src/font.h"
+IMPORT_MAP(splash);
+IMPORT_TILES(font);
 
 #include "Scroll.h"
 #include "Keys.h"
@@ -12,9 +10,8 @@ UINT8 bank_STATE_SPLASH = 2;
 
 #include "Print.h"
 
-void Start_STATE_SPLASH() {
-	InitScrollTiles(0, &splashTiles);
-	InitScroll(&splash, 0, 0);
+void Start_StateSplash() {
+	InitScroll(BANK(splash), &splash, 0, 0);
 	SHOW_BKG;
 	HIDE_WIN;
 
@@ -26,7 +23,7 @@ void Start_STATE_SPLASH() {
 
 extern UINT8 current_level;
 void NextLevel();
-void Update_STATE_SPLASH() {
+void Update_StateSplash() {
 	if(keys) {
 		current_level = 0;
 

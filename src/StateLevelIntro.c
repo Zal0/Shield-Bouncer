@@ -1,10 +1,8 @@
-#pragma bank 2
+#include "Banks/SetBank2.h"
 #include "main.h"
-UINT8 bank_STATE_LEVEL_INTRO = 2;
 
-#include "../res/src/splash.h"
-#include "../res/src/splashTiles.h"
-#include "../res/src/font.h"
+IMPORT_MAP(splash);
+IMPORT_TILES(font);
 
 #include "Scroll.h"
 #include "Keys.h"
@@ -13,9 +11,8 @@ UINT8 bank_STATE_LEVEL_INTRO = 2;
 #include "Print.h"
 
 extern UINT8 current_level;
-void Start_STATE_LEVEL_INTRO() {
-	InitScrollTiles(0, &splashTiles);
-	InitScroll(&splash, 0, 0);
+void Start_StateLevelIntro() {
+	InitScroll(BANK(splash), &splash, 0, 0);
 	SHOW_BKG;
 	HIDE_WIN;
 
@@ -24,8 +21,8 @@ void Start_STATE_LEVEL_INTRO() {
 	Printf(" Level %d ", (current_level + 1));
 }
 
-void Update_STATE_LEVEL_INTRO() {
+void Update_StateLevelIntro() {
 	if(keys) {
-		SetState(STATE_GAME);
+		SetState(StateGame);
 	}
 }

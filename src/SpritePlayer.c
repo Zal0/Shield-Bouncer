@@ -1,16 +1,12 @@
-#pragma bank 2
+#include "Banks/SetBank2.h"
 #include "main.h"
-UINT8 bank_SPRITE_PLAYER = 2;
 
 #include "Keys.h"
 #include "SpriteManager.h"
 #include "Scroll.h"
 #include "ZGBMain.h"
 
-void Start_SPRITE_PLAYER() {
-	THIS->coll_y += 8;
-	THIS->coll_h -= 8;
-
+void Start_SpritePlayer() {
 	scroll_target = THIS;
 }
 
@@ -27,7 +23,7 @@ void Translate(INT8 translate, INT8 x, INT8 y) {
 	}
 }
 
-void Update_SPRITE_PLAYER() {
+void Update_SpritePlayer() {
 	INT8 angle;
 	INT8 translate = 1;
 	
@@ -55,18 +51,18 @@ void Update_SPRITE_PLAYER() {
 
 			angle = angle_matrix[angle_idx];
 			if(angle < 0) {
-				SPRITE_SET_VMIRROR(THIS);
+				THIS->mirror = V_MIRROR;
 				angle = -angle;
 			} else {
-				SPRITE_UNSET_VMIRROR(THIS);
+				THIS->mirror = NO_MIRROR;
 			}
 
-			SET_FRAME(THIS, angle); 
+			SetFrame(THIS, angle); 
 		}
 	} else {
 		if(THIS->anim_frame == 9) {
 			SpriteManagerRemoveSprite(THIS);
-			SetState(STATE_GAME);
+			SetState(StateGame);
 		}
 	}
 }
@@ -77,5 +73,5 @@ void KillPlayer() {
 	scroll_target = 0;
 }
 
-void Destroy_SPRITE_PLAYER() {
+void Destroy_SpritePlayer() {
 }

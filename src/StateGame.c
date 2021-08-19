@@ -1,27 +1,23 @@
-#pragma bank 2
+#include "Banks/SetBank2.h"
 #include "main.h"
-UINT8 bank_STATE_GAME = 2;
 
-#include "..\res\src\tiles.h"
-#include "..\res\src\map.h"
-#include "..\res\src\map1.h"
-#include "..\res\src\map2.h"
-#include "..\res\src\map3.h"
+IMPORT_MAP(map);
+IMPORT_MAP(map1);
+IMPORT_MAP(map2);
+IMPORT_MAP(map3);
 
-typedef struct LevelInfo {
-	UINT16 w;
-	UINT16 h;
+struct MapInfoBanked {
+	UINT8 bank;
 	struct MapInfo* map;
 };
 
-#define LEVEL(A) A##Width, A##Height, &A
-const struct LevelInfo levels[] = {
-	{LEVEL(map1)},
-	{LEVEL(map2)},
-	{LEVEL(map)},
-	{LEVEL(map3)},
+#define BANKED_MAP(MAP) {BANK(MAP), &MAP}
 
-	{0, 0, 0}
+const struct MapInfoBanked levels[] = {	
+	BANKED_MAP(map1),
+	BANKED_MAP(map2),
+	BANKED_MAP(map),
+	BANKED_MAP(map3)
 };
 
 UINT8 current_level = 0;
@@ -34,13 +30,13 @@ UINT8 current_level = 0;
 #include "SpriteManager.h"
 
 #include "Print.h"
-#include "../res/src/font.h"
+IMPORT_TILES(font);
 
 UINT8 collision_tiles[] = {1, 2, 0};
 
-void Start_STATE_GAME() {
+void Start_StateGame() {
 	UINT8 i;
-	const struct LevelInfo* level = &levels[current_level];
+	const struct MapInfoBanked* level = &levels[current_level];
 
 	SPRITES_8x16;
 	for(i = 0; i != N_SPRITE_TYPES; ++ i) {
@@ -48,21 +44,20 @@ void Start_STATE_GAME() {
 	}
 	SHOW_SPRITES;
 
-	InitScrollTiles(0, &tiles);
-	InitScroll(level->map, collision_tiles, 0);
+	InitScroll(level->bank, level->map, collision_tiles, 0);
 	SHOW_BKG;
 
 	INIT_CONSOLE(font, 3, 2);
 }
 
-void Update_STATE_GAME() {
+void Update_StateGame() {
 }
 
 void NextLevel() {
 	current_level ++;
 	if(levels[current_level].map) {
-		SetState(STATE_LEVEL_INTRO);
+		SetState(StateLevelIntro);
 	} else {
-		SetState(STATE_WIN);
+		SetState(StateWin);
 	}
 }

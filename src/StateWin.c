@@ -1,19 +1,16 @@
-#pragma bank 2
+#include "Banks/SetBank2.h"
 #include "main.h"
-UINT8 bank_STATE_WIN = 2;
 
-#include "../res/src/splash.h"
-#include "../res/src/splashTiles.h"
-#include "../res/src/font.h"
+IMPORT_MAP(splash);
+IMPORT_TILES(font);
 
 #include "Scroll.h"
 #include "ZGBMain.h"
 #include "Print.h"
 #include "Keys.h"
 
-void Start_STATE_WIN() {
-	InitScrollTiles(0, &splashTiles);
-	InitScroll(&splash, 0, 0);
+void Start_StateWin() {
+	InitScroll(BANK(splash), &splash, 0, 0);
 	SHOW_BKG;
 	HIDE_WIN;
 
@@ -21,8 +18,8 @@ void Start_STATE_WIN() {
 	PRINT(1, 5, "CONGRATULATIONS!!!");
 }
 
-void Update_STATE_WIN() {
+void Update_StateWin() {
 	if(keys) {
-		SetState(STATE_SPLASH);
+		SetState(StateSplash);
 	}
 }
