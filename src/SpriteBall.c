@@ -49,8 +49,8 @@ void Start_SpriteBall() {
 	THIS->lim_y = 1024;
 }
 
-UINT8 CheckCollisionWithCollider(struct Sprite* sprite1, UINT8 coll_x, UINT8 coll_y, UINT8 coll_w, UINT8 coll_h, 
-	                   struct Sprite* sprite2) {
+UINT8 CheckCollisionWithCollider(Sprite* sprite1, UINT8 coll_x, UINT8 coll_y, UINT8 coll_w, UINT8 coll_h, 
+	                   Sprite* sprite2) {
 	if( (sprite1->x + coll_x + coll_w < sprite2->x) ||
 	    (sprite2->x + sprite2->coll_w < sprite1->x + coll_x) ||
 			(sprite1->y + coll_y + coll_h < sprite2->y ) ||
