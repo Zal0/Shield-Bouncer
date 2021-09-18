@@ -9,16 +9,14 @@ IMPORT_TILES(font);
 #include "Print.h"
 #include "Keys.h"
 
-void Start_StateWin() {
+void START() {
 	InitScroll(BANK(splash), &splash, 0, 0);
-	SHOW_BKG;
-	HIDE_WIN;
 
 	INIT_FONT(font, PRINT_BKG);
 	PRINT(1, 5, "CONGRATULATIONS!!!");
 }
 
-void Update_StateWin() {
+void UPDATE() {
 	if(keys) {
 		SetState(StateSplash);
 	}

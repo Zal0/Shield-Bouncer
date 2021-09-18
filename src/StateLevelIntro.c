@@ -11,17 +11,15 @@ IMPORT_TILES(font);
 #include "Print.h"
 
 extern UINT8 current_level;
-void Start_StateLevelIntro() {
+void START() {
 	InitScroll(BANK(splash), &splash, 0, 0);
-	SHOW_BKG;
-	HIDE_WIN;
 
 	INIT_FONT(font, PRINT_BKG);
 	PRINT_POS(5, 5);
 	Printf(" Level %d ", (current_level + 1));
 }
 
-void Update_StateLevelIntro() {
+void UPDATE() {
 	if(keys) {
 		SetState(StateGame);
 	}

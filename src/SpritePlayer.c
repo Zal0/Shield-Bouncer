@@ -6,7 +6,7 @@
 #include "Scroll.h"
 #include "ZGBMain.h"
 
-void Start_SpritePlayer() {
+void START() {
 	scroll_target = THIS;
 }
 
@@ -23,7 +23,7 @@ void Translate(INT8 translate, INT8 x, INT8 y) {
 	}
 }
 
-void Update_SpritePlayer() {
+void UPDATE() {
 	INT8 angle;
 	INT8 translate = 1;
 	
@@ -73,5 +73,5 @@ void KillPlayer() {
 	scroll_target = 0;
 }
 
-void Destroy_SpritePlayer() {
+void DESTROY() {
 }

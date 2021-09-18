@@ -10,10 +10,8 @@ IMPORT_TILES(font);
 
 #include "Print.h"
 
-void Start_StateSplash() {
+void START() {
 	InitScroll(BANK(splash), &splash, 0, 0);
-	SHOW_BKG;
-	HIDE_WIN;
 
 	INIT_FONT(font, PRINT_BKG);
 	PRINT(3, 5, "Shield Bouncer");
@@ -23,7 +21,7 @@ void Start_StateSplash() {
 
 extern UINT8 current_level;
 void NextLevel();
-void Update_StateSplash() {
+void UPDATE() {
 	if(keys) {
 		current_level = 0;
 

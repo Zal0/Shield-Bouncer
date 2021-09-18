@@ -22,12 +22,12 @@ const UINT8 player_angles[] = {
 	 224,	192, 160,
 };
 
-struct BallInfo {
+typedef struct {
 	INT8 moving;
 	UINT8 angle; 
 	INT8 speed;
 	fixed x,y;
-};
+} CUSTOM_DATA;
 
 UINT8 Angle(UINT8 angle_1, UINT8 angle_2) {
 	UINT8 ret_1 = angle_2 - angle_1;
@@ -37,8 +37,8 @@ UINT8 Angle(UINT8 angle_1, UINT8 angle_2) {
 }
 
 #include "Print.h"
-void Start_SpriteBall() {
-	struct BallInfo* data = (struct BallInfo*)THIS->custom_data;
+void START() {
+	CUSTOM_DATA* data = (CUSTOM_DATA*)THIS->custom_data;
 	data->moving = 0;
 	data->angle = 16;
 	data->speed = 5;
@@ -65,12 +65,12 @@ UINT8 CheckCollisionWithCollider(Sprite* sprite1, UINT8 coll_x, UINT8 coll_y, UI
 extern INT8 angle_idx;
 void KillPlayer();
 void NextLevel();
-void Update_SpriteBall() {
+void UPDATE() {
 	INT8 inc_x = 0;
 	INT8 inc_y = 0;
 	INT8 desp;
 	INT16 cached_x, cached_y;
-	struct BallInfo* data = (struct BallInfo*)THIS->custom_data;
+	CUSTOM_DATA* data = (CUSTOM_DATA*)THIS->custom_data;
 
 	if(THIS->anim_data) {
 		if(THIS->anim_frame == 2) {
@@ -130,5 +130,5 @@ void Update_SpriteBall() {
 	}
 }
 
-void Destroy_SpriteBall() {
+void DESTROY() {
 }

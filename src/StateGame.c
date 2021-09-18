@@ -34,23 +34,14 @@ IMPORT_TILES(font);
 
 UINT8 collision_tiles[] = {1, 2, 0};
 
-void Start_StateGame() {
-	UINT8 i;
+void START() {
 	const struct MapInfoBanked* level = &levels[current_level];
-
-	SPRITES_8x16;
-	for(i = 0; i != N_SPRITE_TYPES; ++ i) {
-		SpriteManagerLoad(i);
-	}
-	SHOW_SPRITES;
-
 	InitScroll(level->bank, level->map, collision_tiles, 0);
-	SHOW_BKG;
 
 	INIT_CONSOLE(font, 3, 2);
 }
 
-void Update_StateGame() {
+void UPDATE() {
 }
 
 void NextLevel() {
